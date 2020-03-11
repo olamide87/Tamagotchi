@@ -1,46 +1,23 @@
+import utils from '../../helpers/utils';
+import eatData from '../../helpers/data/eatData';
+
 // create a private variable called full
 // create 2 buttons(event listeners with 2 separate functions)
 // 1 of the buttons should add 10 to full when pressed and subtract 3 from full when pushed
 // create card through the dom string that prints the name fullness score, and the two buttons
 //
 
-import utils from '../../helpers/utils.js';
 
-let full = 100;
-
-const healthyFood = () => {
-  if (full <= 100) {
-    full += 10;
-    document.getElementById('bar').value = full;
-  }
-};
-
-const junkFood = () => {
-  if (full >= 3) {
-    full -= 3;
-    document.getElementById('bar').value = full;
-  }
-};
-
-const printProgress = () => {
+const eatBuilder = () => {
+  const fullness = eatData.getFullScore();
   let domString = '';
-  domString += '<div>';
-  domString += '<progress id="bar" value="100" min="0" max="100" style="background-color:green"></progress>';
-  domString += '<h3>Eat</h3>';
-  domString += '<div>';
-  domString += '<button id="bad">junkFood</button>';
-  domString += '<button id="good">healthyFood</button>';
-  domString += '</div>';
-  domString += '</div>';
+
+  domString += '<h1><i class="fas fa-cookie-bite"></i></h1>';
+  domString += '<h5>Eat</h5>';
+  domString += `<h6>Full Score: ${fullness}</h6>`;
+  domString += '<button id="healthy-food-btn">Healthy Food</button><button id="unhealthy-food-btn">Unhealthy Food</button>';
+
   utils.printToDom('eat', domString);
 };
 
-const eventListener = () => {
-  document.getElementById('bad').addEventListener('click', junkFood);
-  document.getElementById('good').addEventListener('click', healthyFood);
-};
-
-
-export default {
-  printProgress, eventListener,
-};
+export default { eatBuilder };
