@@ -1,11 +1,8 @@
-@import "~bootstrap/scss/bootstrap";
-@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import '../../../styles/colors';
+@import '../../../styles/main.scss';
+@import '../../../styles/mixins';
 
-
-
-#eat-time {
-  background-color: red;
-    padding: 30px 30px 30px 30px;
-    
-    
-  }
+#eat {
+  @include quadrant($eatQuad, $eatButtonText, $eatButton);
+  grid-area: eat;
+}
